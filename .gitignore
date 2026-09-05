@@ -7,6 +7,7 @@
 *.tfvars.json
 !aws/environments/lab/terraform.tfvars
 !aws/environments/organization/terraform.tfvars
+!aws/environments/production/terraform.tfvars
 !azure/environments/lab/terraform.tfvars
 !azure/environments/organization/terraform.tfvars
 !gcp/environments/lab/terraform.tfvars

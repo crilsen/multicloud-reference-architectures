@@ -15,7 +15,7 @@ if [[ -n "$blocked_files" ]]; then
   exit 1
 fi
 
-allowed_tfvars='^(aws|azure|gcp|oci)/environments/(lab|organization)/terraform\.tfvars$'
+allowed_tfvars='^aws/environments/(lab|organization|production)/terraform\.tfvars$|^(azure|gcp|oci)/environments/(lab|organization)/terraform\.tfvars$'
 unexpected_tfvars="$(find . -type f -name '*.tfvars' -not -path './.git/*' -print | sed 's#^\./##' | grep -Ev "$allowed_tfvars" || true)"
 
 if [[ -n "$unexpected_tfvars" ]]; then

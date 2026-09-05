@@ -12,6 +12,13 @@ provider "aws" {
 
 data "aws_caller_identity" "management" {}
 
+check "management_account_boundary" {
+  assert {
+    condition     = data.aws_caller_identity.management.account_id == var.management_account_id
+    error_message = "Refusing to manage AWS Organizations from a credential outside the expected management account."
+  }
+}
+
 module "organization" {
   source = "../../modules/organizations"
 

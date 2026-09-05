@@ -2,9 +2,15 @@
 
 Public Terraform portfolio project for studying Kubernetes, networking, identity, registries, observability, and governance across AWS, Azure, Google Cloud, and Oracle Cloud Infrastructure. Every implementation uses provider-native resources and generic values only.
 
+## Authorship
+
+This project was conceived, architected, and developed by [@crilsen](https://github.com/crilsen).
+
+The cloud architecture, Terraform implementations, multi-cloud governance models, automation, and documentation were created as an independent Cloud and Kubernetes engineering lab.
+
 ## Architecture model
 
-Each provider has two independent Terraform roots: `environments/organization` manages hierarchy and policy; `environments/lab` manages the Kubernetes workload environment.
+Each provider separates governance and workload Terraform roots. `environments/organization` manages hierarchy and policy, while workload roots manage Kubernetes infrastructure. AWS currently provides distinct `environments/lab` and `environments/production` roots with enforced account boundaries.
 
 | Boundary | AWS | Azure | GCP | OCI |
 | --- | --- | --- | --- | --- |
@@ -66,7 +72,7 @@ Mappings express intent, not feature parity.
 
 ## Safety and lifecycle
 
-- Only the eight known generic `terraform.tfvars` paths are allowlisted.
+- Only known generic `terraform.tfvars` paths are allowlisted.
 - CI rejects keys, certificates, state, account IDs, access keys, e-mails, embedded credentials, and nested repositories.
 - Deletion protection is enabled where supported.
 - Real identifiers belong only in a private working copy and must never be committed.

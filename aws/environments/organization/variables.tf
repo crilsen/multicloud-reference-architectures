@@ -9,6 +9,17 @@ variable "aws_region" {
   }
 }
 
+variable "management_account_id" {
+  description = "Expected AWS account ID for the Organizations management account."
+  type        = string
+  sensitive   = true
+
+  validation {
+    condition     = can(regex("^[0-9]{12}$", var.management_account_id))
+    error_message = "management_account_id must contain exactly 12 digits."
+  }
+}
+
 variable "organization_name" {
   description = "Generic label used for organizational resources."
   type        = string
