@@ -1,0 +1,9 @@
+output "cluster_name" { value = module.cluster.cluster_name }
+output "cluster_endpoint" {
+  value     = module.cluster.cluster_endpoint
+  sensitive = true
+}
+output "repository_url" { value = module.registry.repository_url }
+output "configure_kubectl" {
+  value = "aws eks update-kubeconfig --region ${var.aws_region} --name ${module.cluster.cluster_name}"
+}
