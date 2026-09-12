@@ -5,14 +5,14 @@ provider "azurerm" {
 }
 
 module "hierarchy" {
-  source = "../../modules/management-groups"
+  source                     = "../../modules/management-groups"
   management_group_name      = var.management_group_name
   lab_subscription_id        = var.lab_subscription_id
   production_subscription_id = var.production_subscription_id
 }
 
 module "policy" {
-  source = "../../modules/policy"
+  source              = "../../modules/policy"
   management_group_id = module.hierarchy.management_group_id
   allowed_locations   = var.allowed_locations
 }
