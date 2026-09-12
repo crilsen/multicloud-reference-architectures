@@ -19,7 +19,7 @@ resource "azurerm_policy_definition" "allowed_locations" {
 
   parameters = jsonencode({
     allowedLocations = {
-      type = "Array"
+      type     = "Array"
       metadata = { displayName = "Allowed locations" }
     }
   })
